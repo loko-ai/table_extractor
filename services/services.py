@@ -7,6 +7,7 @@ from loko_extensions.business.decorators import extract_value_args
 
 # from fastapi import Request, FastAPI, File
 from business import camelot_extraction
+from business.camelot_extraction import extract_from_camelot
 
 app = Flask("")
 
@@ -29,8 +30,9 @@ import camelot
 def test2(file, args):
     logger.debug(f"file {file.__dict__}")
     fb = file.read()
-    res = camelot_extraction(fb)
-    return jsonify(res)
+    res = extract_from_camelot(fb)
+    logger.debug(f"resssssssssssss {res}")
+    return jsonify(dict(content=res))
 
 
 
