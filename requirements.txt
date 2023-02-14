@@ -1,0 +1,10 @@
+Flask
+PyPDF2 < 3.0
+camelot-py
+fastapi
+ghostscript
+loguru
+loko-client
+loko-extensions
+python-multipart
+table_ocr

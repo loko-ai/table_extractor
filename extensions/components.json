@@ -1,0 +1,29 @@
+[
+ {
+  "name": "TableExtractor",
+  "description": "",
+  "group": "OCR",
+  "icon": "RiCheckboxBlankCircleFill",
+  "click": null,
+  "events": null,
+  "configured": true,
+  "inputs": [
+   {
+    "id": "pdf",
+    "label": "pdf",
+    "service": "extract_table",
+    "to": "output"
+   }
+  ],
+  "outputs": [
+   {
+    "id": "output",
+    "label": "output"
+   }
+  ],
+  "options": {
+   "values": {},
+   "args": []
+  }
+ }
+]
