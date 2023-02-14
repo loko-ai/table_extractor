@@ -3,7 +3,7 @@
   "name": "TableExtractor",
   "description": "",
   "group": "OCR",
-  "icon": "RiCheckboxBlankCircleFill",
+  "icon": "RiTableFill",
   "click": null,
   "events": null,
   "configured": true,
@@ -23,7 +23,18 @@
   ],
   "options": {
    "values": {},
-   "args": []
+   "args": [
+    {
+     "name": "process_background",
+     "type": "boolean",
+     "label": "Process Background Lines",
+     "helper": "",
+     "group": "",
+     "value": false,
+     "description": "",
+     "validation": null
+    }
+   ]
   }
  }
 ]

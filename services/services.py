@@ -29,8 +29,11 @@ import camelot
 @extract_value_args(_request=request, file=True)
 def test2(file, args):
     logger.debug(f"file {file.__dict__}")
+    logger.debug(f"args {args}")
+    kwargs = dict()
+    kwargs["process_background"] = args.pop("process_background")
     fb = file.read()
-    res = extract_from_camelot(fb)
+    res = extract_from_camelot(fb, kwargs)
     logger.debug(f"resssssssssssss {res}")
     return jsonify(dict(content=res))
 

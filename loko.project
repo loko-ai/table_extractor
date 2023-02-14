@@ -3,81 +3,10 @@
   "id": "table_extractor",
   "description": "",
   "created_on": "02/02/2023, 09:14:05",
-  "last_modify": "14/02/2023, 15:40:43",
+  "last_modify": "14/02/2023, 16:19:34",
   "graphs": {
     "main": {
       "nodes": [
-        {
-          "id": "85b838a3-2303-432a-90b3-9d11796e8f7e",
-          "position": {
-            "x": 888,
-            "y": 346
-          },
-          "type": "custom",
-          "dragHandle": "#nodeHandle",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "width": 150,
-          "height": 56,
-          "selected": false,
-          "dragging": false,
-          "data": {
-            "name": "TableExtractor",
-            "events": null,
-            "description": "",
-            "inputs": [
-              {
-                "id": "pdf",
-                "label": "pdf",
-                "service": "extract_table",
-                "to": "output"
-              }
-            ],
-            "outputs": [
-              {
-                "id": "output",
-                "label": "output"
-              }
-            ],
-            "configured": true,
-            "options": {
-              "group": "OCR",
-              "args": [
-                {
-                  "name": "comment",
-                  "type": "area",
-                  "label": "Node comment",
-                  "helper": "Use it to explain the usage of this node"
-                },
-                {
-                  "name": "alias",
-                  "type": "text",
-                  "label": "Name",
-                  "helper": "Use this name as an alias"
-                },
-                {
-                  "name": "debug",
-                  "type": "boolean",
-                  "label": "Debug to Console",
-                  "divider": true
-                }
-              ],
-              "click": null,
-              "icon": "RiCheckboxBlankCircleFill",
-              "values": {
-                "debug": true
-              }
-            },
-            "locked": null
-          },
-          "selectable": true,
-          "draggable": true,
-          "positionAbsolute": {
-            "x": 888,
-            "y": 346
-          },
-          "__class__": "Node"
-        },
         {
           "id": "af570cfd-eb42-42ad-95f0-814bfe78ff08",
           "position": {
@@ -162,6 +91,188 @@
                 "debug": false,
                 "read_content": false,
                 "value": {
+                  "name": "foo.pdf",
+                  "path": "data/projects/table_extractor/data/foo.pdf",
+                  "parent": "data/projects/table_extractor/data",
+                  "isDir": false,
+                  "hidden": false
+                }
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "__class__": "Node"
+        },
+        {
+          "id": "d93319f4-6652-4084-a86a-1de2ed5002a8",
+          "position": {
+            "x": 856,
+            "y": 335
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "TableExtractor",
+            "events": null,
+            "description": "",
+            "inputs": [
+              {
+                "id": "pdf",
+                "label": "pdf",
+                "service": "extract_table",
+                "to": "output"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "OCR",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "process_background",
+                  "type": "boolean",
+                  "label": "Process Background Lines",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "",
+                  "validation": null
+                }
+              ],
+              "click": null,
+              "icon": "RiTableFill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": false,
+                "process_background": false
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 856,
+            "y": 335
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "e575555f-4a7d-482d-b084-b5a8ad96d226",
+          "position": {
+            "x": 484.8286887799211,
+            "y": 647.6312025824034
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 156,
+          "height": 88,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "File Reader",
+            "events": null,
+            "description": "### Description\nThe FILE READER component allows the reading of individual files.\n\n### Output\nSetting the **Read Content** parameter to **False**, the output provides the file path in PosixPath format. The component will then need to be connected to other components to read the content, for example *LineReader*.\n\nOn the contrary, setting the **Read Content** parameter to **True**, you can choose whether to read the content in *Binary* format. This format will be selected for reading non-text files.",
+            "inputs": [
+              {
+                "id": "input",
+                "label": "input"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Inputs",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "value",
+                  "type": "files",
+                  "label": "File",
+                  "fragment": "files",
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "read_content",
+                  "type": "boolean",
+                  "label": "Read content"
+                },
+                {
+                  "name": "binary",
+                  "type": "dynamic",
+                  "label": "Binary",
+                  "dynamicType": {
+                    "true": "boolean"
+                  },
+                  "parent": "read_content"
+                }
+              ],
+              "click": "Send file",
+              "icon": "RiFileList3Fill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": false,
+                "read_content": false,
+                "value": {
                   "name": "background_lines_1.pdf",
                   "path": "data/projects/table_extractor/data/background_lines_1.pdf",
                   "parent": "data/projects/table_extractor/data",
@@ -174,15 +285,175 @@
           },
           "selectable": true,
           "draggable": true,
+          "positionAbsolute": {
+            "x": 484.8286887799211,
+            "y": 647.6312025824034
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "ada8f12f-9062-4a52-b5a2-46beefd3cde6",
+          "position": {
+            "x": 784.4676566874703,
+            "y": 656.6312025824034
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 281,
+          "height": 72,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "TableExtractor",
+            "events": null,
+            "description": "",
+            "inputs": [
+              {
+                "id": "pdf",
+                "label": "pdf",
+                "service": "extract_table",
+                "to": "output"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "OCR",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "process_background",
+                  "type": "boolean",
+                  "label": "Process Background Lines",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "",
+                  "validation": null
+                }
+              ],
+              "click": null,
+              "icon": "RiTableFill",
+              "values": {
+                "comment": "",
+                "alias": "process backround lines ON",
+                "debug": false,
+                "process_background": true
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 784.4676566874703,
+            "y": 656.6312025824034
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "fa67ee3f-1216-4dca-b0dc-f9f6d21e097a",
+          "position": {
+            "x": 437.14989351982626,
+            "y": 282.29978703965253
+          },
+          "type": "comment",
+          "dragHandle": "#commentHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 651,
+          "height": 168,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "comment": "Example 1",
+            "fill": "#90BE6D",
+            "height": 144,
+            "width": 651
+          },
+          "zIndex": -1,
+          "selectable": false,
+          "connectable": false,
+          "positionAbsolute": {
+            "x": 437.14989351982626,
+            "y": 282.29978703965253
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "8ea83c90-a943-4848-8243-163136713bcb",
+          "position": {
+            "x": 448.5289017402685,
+            "y": 607.1502773869215
+          },
+          "type": "comment",
+          "dragHandle": "#commentHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 664,
+          "height": 176,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "comment": "Example 2",
+            "fill": "#577590",
+            "height": 176,
+            "width": 664
+          },
+          "zIndex": -1,
+          "selectable": false,
+          "connectable": false,
+          "positionAbsolute": {
+            "x": 448.5289017402685,
+            "y": 607.1502773869215
+          },
           "__class__": "Node"
         }
       ],
       "edges": [
         {
-          "id": "reactflow__edge-af570cfd-eb42-42ad-95f0-814bfe78ff08output-85b838a3-2303-432a-90b3-9d11796e8f7epdf",
+          "id": "reactflow__edge-af570cfd-eb42-42ad-95f0-814bfe78ff08output-d93319f4-6652-4084-a86a-1de2ed5002a8pdf",
           "source": "af570cfd-eb42-42ad-95f0-814bfe78ff08",
           "sourceHandle": "output",
-          "target": "85b838a3-2303-432a-90b3-9d11796e8f7e",
+          "target": "d93319f4-6652-4084-a86a-1de2ed5002a8",
+          "targetHandle": "pdf",
+          "data": {
+            "startColor": "#F8637A",
+            "stopColor": "#888"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        },
+        {
+          "id": "dab89048-1299-49a3-bc3e-176104e7918a",
+          "source": "e575555f-4a7d-482d-b084-b5a8ad96d226",
+          "sourceHandle": "output",
+          "target": "ada8f12f-9062-4a52-b5a2-46beefd3cde6",
           "targetHandle": "pdf",
           "data": {
             "startColor": "#F8637A",

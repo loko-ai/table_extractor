@@ -5,11 +5,11 @@ import camelot
 from loguru import logger
 
 
-def extract_from_camelot(file):
+def extract_from_camelot(file, kwargs):
     file_bytes = io.BytesIO(file).getbuffer()
     file_path = pathlib.Path('file.pdf').write_bytes(file_bytes)
     logger.debug(f"FILE PATH{file_path}")
-    tables = camelot.read_pdf("file.pdf", process_background=True)
+    tables = camelot.read_pdf("file.pdf", **kwargs)
     logger.debug(f"filepath {file_path}, tables: {tables.__dict__}")
     res = []
     for page, pdf_table in enumerate(tables):

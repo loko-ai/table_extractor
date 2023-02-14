@@ -3,5 +3,10 @@ from loko_extensions.model.components import Input, Output, Dynamic, AsyncSelect
 from loko_extensions.model.components import Arg
 
 pdf_service = "extract_table"
-table_ocr = Component(name="TableExtractor", inputs=[Input("pdf", service= pdf_service)],  group='OCR')
+process_background = Arg(type="boolean", label="Process Background Lines", name="process_background", value=False)
+
+args_list = [process_background]
+
+table_ocr = Component(name="TableExtractor", inputs=[Input("pdf", service=pdf_service)], group='OCR', args=args_list, icon="RiTableFill")
+
 save_extensions([table_ocr])
