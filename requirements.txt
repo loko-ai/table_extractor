@@ -6,5 +6,6 @@ ghostscript
 loguru
 loko-client
 loko-extensions
+pymupdf
 python-multipart
 table_ocr

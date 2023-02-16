@@ -20,10 +20,11 @@ def download_image_to_tempdir(url, filename=None):
             f.write(chunk)
     return filepath
 
-
-def main(image_filepath):
+def main(url):
+    image_filepath = url
     # image_filepath = download_image_to_tempdir(url)
     image_tables = table_ocr.extract_tables.main([image_filepath])
+
     print("Running `{}`".format(f"extract_tables.main([{image_filepath}])."))
     print("Extracted the following tables from the image:")
     print(image_tables)
@@ -50,10 +51,10 @@ def main(image_filepath):
                 print("...")
             return table_ocr.ocr_to_csv.text_files_to_csv(ocr)
 
-
 if __name__ == "__main__":
-    csv_output = main(sys.argv[1])
+    # csv_output = main(sys.argv[1])
+    csv_output = main("../data/example-page.png")
+
     print()
     print("Here is the entire CSV output:")
     print()
-    print(csv_output)
