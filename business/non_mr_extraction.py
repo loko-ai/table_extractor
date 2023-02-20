@@ -39,16 +39,15 @@ from loguru import logger
 #             return table_ocr.ocr_to_csv.text_files_to_csv(ocr)
 
 
-def extraxt_table_from_non_mr_img(doc_filepath, ext_type="pdf", language="ita"):
-    ocr = TesseractOCR(lang=language)
+def extraxt_table_from_non_mr_img(doc_filepath, ext_type="pdf", non_mr_kwargs=None):
+    ocr = TesseractOCR(**non_mr_kwargs["ocr_kwargs"])
     if ext_type == "pdf":
         doc = PDF(src=doc_filepath)
-
     else:
         # Instantiation of the image
         doc = Image(src=doc_filepath)
 
     # Table identification
-    doc_tables = doc.extract_tables(ocr=ocr, implicit_rows=False)
+    doc_tables = doc.extract_tables(ocr=ocr, **non_mr_kwargs["extraction_kwargs"])
     res = [table.df.to_dict(orient="records") for table in doc_tables]
     return res

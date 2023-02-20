@@ -12,6 +12,10 @@ f_ext = ".pdf"
 def extract_from_camelot(file, kwargs):
     file_bytes = io.BytesIO(file).getbuffer()
     file_path = pathlib.Path(TEMP_FILENAME+f_ext).write_bytes(file_bytes)
+    if kwargs["flavor"]=="stream":
+        params_to_delete = ["line_scale", "process_background"]
+        for p in params_to_delete:
+            kwargs.pop(p)
     logger.debug(f"FILE PATH{file_path}")
     tables = camelot.read_pdf(TEMP_FILENAME+f_ext, **kwargs)
     logger.debug(f"filepath {file_path}, tables: {tables.__dict__}")

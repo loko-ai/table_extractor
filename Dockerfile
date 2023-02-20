@@ -1,7 +1,4 @@
-FROM python:3.10-slim
-CMD echo "ciao ce"
-CMD echo "ciao ro"
-CMD echo "ciao rowe"
+FROM python:3.9-slim
 RUN apt-get update && apt-get install -y python3-opencv
 RUN apt-get update --fix-missing && apt-get install -y gcc tesseract-ocr wget libmagic-dev ffmpeg libsm6 libxext6 && rm -rf /var/cache/apt
 RUN rm /usr/share/tesseract-ocr/4.00/tessdata/eng.traineddata

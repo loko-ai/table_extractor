@@ -25,6 +25,7 @@
    "values": {
     "type_of_doc": "Auto-Detect",
     "lang": "ita",
+    "implicit_rows": true,
     "flavor": "lattice",
     "line_scale": 15
    },
@@ -60,6 +61,38 @@
       "ita",
       "eng"
      ],
+     "fields": null,
+     "url": null
+    },
+    {
+     "name": "borderless_tables",
+     "type": "dynamic",
+     "label": "Detect Borderless Tables",
+     "helper": "",
+     "group": "",
+     "value": false,
+     "description": "",
+     "validation": null,
+     "parent": "type_of_doc",
+     "condition": "{parent}==\"Non Machine-Readable\"",
+     "dynamicType": "boolean",
+     "options": null,
+     "fields": null,
+     "url": null
+    },
+    {
+     "name": "implicit_rows",
+     "type": "dynamic",
+     "label": "Split implicit rows",
+     "helper": "",
+     "group": "",
+     "value": true,
+     "description": "",
+     "validation": null,
+     "parent": "type_of_doc",
+     "condition": "{parent}==\"Non Machine-Readable\"",
+     "dynamicType": "boolean",
+     "options": null,
      "fields": null,
      "url": null
     },

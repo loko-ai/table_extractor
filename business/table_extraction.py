@@ -24,10 +24,8 @@ def extract_table(file, type_of_doc, camelot_kwargs, non_mr_kwargs):
     is_mr = False
     # is_mr = False if type_of_doc=="Non Machine-Readable"
     doc = None
-    if f_ext == ".pdf" and type_of_doc!="Non Machine-Readable":
+    if f_ext == ".pdf" and type_of_doc != "Non Machine-Readable":
         is_mr, doc = is_machine_readable(fb)
-
-
     logger.debug(f"Is machine readable:: {is_mr}")
     if is_mr:
         logger.debug(f"Extracting from camelot")
@@ -44,14 +42,14 @@ def extract_table(file, type_of_doc, camelot_kwargs, non_mr_kwargs):
                 # img.save("img0_"+i+".jpg")
                 data = img.tobytes("format")
                 img = Image.open(io.BytesIO(data))
-                file_path = pathlib.Path(TEMP_FILENAME+i+f_ext).write_bytes(img)
-                res.append(extraxt_table_from_non_mr_img(file_path, ext_type=f_ext, **non_mr_kwargs))
+                file_path = pathlib.Path(TEMP_FILENAME + i + f_ext).write_bytes(img)
+                res.append(extraxt_table_from_non_mr_img(file_path, ext_type=f_ext, non_mr_kwargs=non_mr_kwargs))
         else:
             logger.debug(f"Image extraction with table_ocr")
             file_bytes = io.BytesIO(fb).getbuffer()
             file_path = pathlib.Path(TEMP_FILENAME + f_ext).write_bytes(file_bytes)
             logger.debug(f"file path {file_path}")
-            res = extraxt_table_from_non_mr_img(TEMP_FILENAME + f_ext, ext_type=f_ext, **non_mr_kwargs)
+            res = extraxt_table_from_non_mr_img(TEMP_FILENAME + f_ext, ext_type=f_ext, non_mr_kwargs=non_mr_kwargs)
 
         logger.debug(f"======================================\n res table ocr {res}")
     # print(file.name)

@@ -3,7 +3,7 @@
   "id": "table_extractor",
   "description": "",
   "created_on": "02/02/2023, 09:14:05",
-  "last_modify": "20/02/2023, 14:46:54",
+  "last_modify": "20/02/2023, 16:04:02",
   "graphs": {
     "main": {
       "nodes": [
@@ -404,7 +404,7 @@
           "id": "2eb09b34-4b15-4968-83c1-1e92ab2cc259",
           "position": {
             "x": 1377.5650281253754,
-            "y": 657.3575585682032
+            "y": 671.3575585682032
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -498,190 +498,44 @@
           "draggable": true,
           "positionAbsolute": {
             "x": 1377.5650281253754,
-            "y": 657.3575585682032
+            "y": 671.3575585682032
           },
           "__class__": "Node"
         },
         {
-          "id": "543eb02b-7a27-415f-8f04-e382125c2a74",
+          "id": "f09024f9-413d-4fb5-a461-c56f162526d1",
           "position": {
-            "x": 826.1606784188804,
-            "y": 335.8752510678382
+            "x": 1297.0999533407412,
+            "y": 604.482307500365
           },
-          "type": "custom",
-          "dragHandle": "#nodeHandle",
+          "type": "comment",
+          "dragHandle": "#commentHandle",
           "sourcePosition": "right",
           "targetPosition": "left",
-          "width": 150,
-          "height": 56,
+          "width": 669,
+          "height": 186,
           "selected": false,
           "dragging": false,
           "data": {
-            "name": "TableExtractor",
-            "events": null,
-            "description": "",
-            "inputs": [
-              {
-                "id": "pdf",
-                "label": "pdf",
-                "service": "extract_table",
-                "to": "output"
-              }
-            ],
-            "outputs": [
-              {
-                "id": "output",
-                "label": "output"
-              }
-            ],
-            "configured": true,
-            "options": {
-              "group": "OCR",
-              "args": [
-                {
-                  "name": "comment",
-                  "type": "area",
-                  "label": "Node comment",
-                  "helper": "Use it to explain the usage of this node"
-                },
-                {
-                  "name": "alias",
-                  "type": "text",
-                  "label": "Name",
-                  "helper": "Use this name as an alias"
-                },
-                {
-                  "name": "debug",
-                  "type": "boolean",
-                  "label": "Debug to Console",
-                  "divider": true
-                },
-                {
-                  "name": "type_of_doc",
-                  "type": "select",
-                  "label": "Type of Document",
-                  "helper": "",
-                  "group": "",
-                  "value": "Auto-Detect",
-                  "description": "",
-                  "validation": null,
-                  "options": [
-                    "Auto-Detect",
-                    "Machine-Readable",
-                    "Non Machine-Readable"
-                  ]
-                },
-                {
-                  "name": "lang",
-                  "type": "dynamic",
-                  "label": "Document Language",
-                  "helper": "Choose the language that the OCR needs to use",
-                  "group": "",
-                  "value": "ita",
-                  "description": "",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Non Machine-Readable\"",
-                  "dynamicType": "select",
-                  "options": [
-                    "ita",
-                    "eng"
-                  ],
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "flavor",
-                  "type": "dynamic",
-                  "label": "Parsing Method",
-                  "helper": "Select \"lattice\" if you want a deterministic parser, it works good on doc with demarcated lines between cells and can detect multiple tables in a single page. Select the option \"stream\" if your docs have whitespaces to simulate table structure.",
-                  "group": "",
-                  "value": "lattice",
-                  "description": "",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "select",
-                  "options": [
-                    "stream",
-                    "lattice"
-                  ],
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "process_background",
-                  "type": "dynamic",
-                  "label": "Process Background Lines",
-                  "helper": "",
-                  "group": "",
-                  "value": false,
-                  "description": "Whether to detect line segments not in foreground. It will be taken into consideration only if \"lattice\" is selected as parser.",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "boolean",
-                  "options": null,
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "line_scale",
-                  "type": "dynamic",
-                  "label": "Line Scale",
-                  "helper": "Increase the value to detect smaller lines. Large value (>150) will lead to detect text as lines. It only works if \"lattice\" is selected as parser.",
-                  "group": "",
-                  "value": 15,
-                  "description": "",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "number",
-                  "options": null,
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "split_text",
-                  "type": "dynamic",
-                  "label": "Split Text",
-                  "helper": "",
-                  "group": "",
-                  "value": false,
-                  "description": "Choose whether to split the text that spans across multiple cells.",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "boolean",
-                  "options": null,
-                  "fields": null,
-                  "url": null
-                }
-              ],
-              "click": null,
-              "icon": "RiTableFill",
-              "values": {
-                "type_of_doc": "Auto-Detect",
-                "lang": "ita",
-                "flavor": "lattice",
-                "line_scale": 15,
-                "debug": true
-              }
-            }
+            "comment": "Non-Machine Readable Doc - CONFIGURED, lang=eng",
+            "fill": "#F9C74F",
+            "height": 186,
+            "width": 668.7570166778039
           },
-          "selectable": true,
-          "draggable": true,
+          "zIndex": -1,
+          "selectable": false,
+          "connectable": false,
           "positionAbsolute": {
-            "x": 826.1606784188804,
-            "y": 335.8752510678382
+            "x": 1297.0999533407412,
+            "y": 604.482307500365
           },
           "__class__": "Node"
         },
         {
-          "id": "22dc88a2-d9eb-46c0-8d87-c45597400f9f",
+          "id": "e8b809d2-a846-4724-bdc0-8fcc993ea9bd",
           "position": {
-            "x": 806.9463904452667,
-            "y": 681.3030757884674
+            "x": 1715,
+            "y": 686
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -747,7 +601,7 @@
                   ]
                 },
                 {
-                  "name": "lang",
+                  "name": "language",
                   "type": "dynamic",
                   "label": "Document Language",
                   "helper": "Choose the language that the OCR needs to use",
@@ -766,356 +620,34 @@
                   "url": null
                 },
                 {
-                  "name": "flavor",
+                  "name": "borderless_tables",
                   "type": "dynamic",
-                  "label": "Parsing Method",
-                  "helper": "Select \"lattice\" if you want a deterministic parser, it works good on doc with demarcated lines between cells and can detect multiple tables in a single page. Select the option \"stream\" if your docs have whitespaces to simulate table structure.",
-                  "group": "",
-                  "value": "lattice",
-                  "description": "",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "select",
-                  "options": [
-                    "stream",
-                    "lattice"
-                  ],
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "process_background",
-                  "type": "dynamic",
-                  "label": "Process Background Lines",
+                  "label": "Detect Borderless Tables",
                   "helper": "",
                   "group": "",
                   "value": false,
-                  "description": "Whether to detect line segments not in foreground. It will be taken into consideration only if \"lattice\" is selected as parser.",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "boolean",
-                  "options": null,
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "line_scale",
-                  "type": "dynamic",
-                  "label": "Line Scale",
-                  "helper": "Increase the value to detect smaller lines. Large value (>150) will lead to detect text as lines. It only works if \"lattice\" is selected as parser.",
-                  "group": "",
-                  "value": 15,
-                  "description": "",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "number",
-                  "options": null,
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "split_text",
-                  "type": "dynamic",
-                  "label": "Split Text",
-                  "helper": "",
-                  "group": "",
-                  "value": false,
-                  "description": "Choose whether to split the text that spans across multiple cells.",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "boolean",
-                  "options": null,
-                  "fields": null,
-                  "url": null
-                }
-              ],
-              "click": null,
-              "icon": "RiTableFill",
-              "values": {
-                "comment": "",
-                "alias": "",
-                "debug": false,
-                "type_of_doc": "Machine-Readable",
-                "flavor": "lattice",
-                "process_background": true,
-                "line_scale": "15",
-                "split_text": false
-              }
-            },
-            "locked": null
-          },
-          "selectable": true,
-          "draggable": true,
-          "positionAbsolute": {
-            "x": 806.9463904452667,
-            "y": 681.3030757884674
-          },
-          "__class__": "Node"
-        },
-        {
-          "id": "96761fa6-50e5-4346-b996-d671279ab6d3",
-          "position": {
-            "x": 1660.7133706864013,
-            "y": 331.7534200579276
-          },
-          "type": "custom",
-          "dragHandle": "#nodeHandle",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "width": 150,
-          "height": 56,
-          "selected": false,
-          "dragging": false,
-          "data": {
-            "name": "TableExtractor",
-            "events": null,
-            "description": "",
-            "inputs": [
-              {
-                "id": "pdf",
-                "label": "pdf",
-                "service": "extract_table",
-                "to": "output"
-              }
-            ],
-            "outputs": [
-              {
-                "id": "output",
-                "label": "output"
-              }
-            ],
-            "configured": true,
-            "options": {
-              "group": "OCR",
-              "args": [
-                {
-                  "name": "comment",
-                  "type": "area",
-                  "label": "Node comment",
-                  "helper": "Use it to explain the usage of this node"
-                },
-                {
-                  "name": "alias",
-                  "type": "text",
-                  "label": "Name",
-                  "helper": "Use this name as an alias"
-                },
-                {
-                  "name": "debug",
-                  "type": "boolean",
-                  "label": "Debug to Console",
-                  "divider": true
-                },
-                {
-                  "name": "type_of_doc",
-                  "type": "select",
-                  "label": "Type of Document",
-                  "helper": "",
-                  "group": "",
-                  "value": "Auto-Detect",
-                  "description": "",
-                  "validation": null,
-                  "options": [
-                    "Auto-Detect",
-                    "Machine-Readable",
-                    "Non Machine-Readable"
-                  ]
-                },
-                {
-                  "name": "lang",
-                  "type": "dynamic",
-                  "label": "Document Language",
-                  "helper": "Choose the language that the OCR needs to use",
-                  "group": "",
-                  "value": "ita",
                   "description": "",
                   "validation": null,
                   "parent": "type_of_doc",
                   "condition": "{parent}==\"Non Machine-Readable\"",
-                  "dynamicType": "select",
-                  "options": [
-                    "ita",
-                    "eng"
-                  ],
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "flavor",
-                  "type": "dynamic",
-                  "label": "Parsing Method",
-                  "helper": "Select \"lattice\" if you want a deterministic parser, it works good on doc with demarcated lines between cells and can detect multiple tables in a single page. Select the option \"stream\" if your docs have whitespaces to simulate table structure.",
-                  "group": "",
-                  "value": "lattice",
-                  "description": "",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "select",
-                  "options": [
-                    "stream",
-                    "lattice"
-                  ],
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "process_background",
-                  "type": "dynamic",
-                  "label": "Process Background Lines",
-                  "helper": "",
-                  "group": "",
-                  "value": false,
-                  "description": "Whether to detect line segments not in foreground. It will be taken into consideration only if \"lattice\" is selected as parser.",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
                   "dynamicType": "boolean",
                   "options": null,
                   "fields": null,
                   "url": null
                 },
                 {
-                  "name": "line_scale",
+                  "name": "implicit_rows",
                   "type": "dynamic",
-                  "label": "Line Scale",
-                  "helper": "Increase the value to detect smaller lines. Large value (>150) will lead to detect text as lines. It only works if \"lattice\" is selected as parser.",
-                  "group": "",
-                  "value": 15,
-                  "description": "",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "number",
-                  "options": null,
-                  "fields": null,
-                  "url": null
-                },
-                {
-                  "name": "split_text",
-                  "type": "dynamic",
-                  "label": "Split Text",
+                  "label": "Split implicit rows",
                   "helper": "",
                   "group": "",
-                  "value": false,
-                  "description": "Choose whether to split the text that spans across multiple cells.",
-                  "validation": null,
-                  "parent": "type_of_doc",
-                  "condition": "{parent}==\"Machine-Readable\"",
-                  "dynamicType": "boolean",
-                  "options": null,
-                  "fields": null,
-                  "url": null
-                }
-              ],
-              "click": null,
-              "icon": "RiTableFill",
-              "values": {
-                "type_of_doc": "Auto-Detect",
-                "lang": "ita",
-                "flavor": "lattice",
-                "line_scale": 15,
-                "debug": true
-              }
-            }
-          },
-          "selectable": true,
-          "draggable": true,
-          "positionAbsolute": {
-            "x": 1660.7133706864013,
-            "y": 331.7534200579276
-          },
-          "__class__": "Node"
-        },
-        {
-          "id": "b2d0b9e7-94f1-4f07-8b2a-413d266f9450",
-          "position": {
-            "x": 1681.1064678828686,
-            "y": 677.3168178475833
-          },
-          "type": "custom",
-          "dragHandle": "#nodeHandle",
-          "sourcePosition": "right",
-          "targetPosition": "left",
-          "width": 150,
-          "height": 56,
-          "selected": false,
-          "dragging": false,
-          "data": {
-            "name": "TableExtractor",
-            "events": null,
-            "description": "",
-            "inputs": [
-              {
-                "id": "pdf",
-                "label": "pdf",
-                "service": "extract_table",
-                "to": "output"
-              }
-            ],
-            "outputs": [
-              {
-                "id": "output",
-                "label": "output"
-              }
-            ],
-            "configured": true,
-            "options": {
-              "group": "OCR",
-              "args": [
-                {
-                  "name": "comment",
-                  "type": "area",
-                  "label": "Node comment",
-                  "helper": "Use it to explain the usage of this node"
-                },
-                {
-                  "name": "alias",
-                  "type": "text",
-                  "label": "Name",
-                  "helper": "Use this name as an alias"
-                },
-                {
-                  "name": "debug",
-                  "type": "boolean",
-                  "label": "Debug to Console",
-                  "divider": true
-                },
-                {
-                  "name": "type_of_doc",
-                  "type": "select",
-                  "label": "Type of Document",
-                  "helper": "",
-                  "group": "",
-                  "value": "Auto-Detect",
-                  "description": "",
-                  "validation": null,
-                  "options": [
-                    "Auto-Detect",
-                    "Machine-Readable",
-                    "Non Machine-Readable"
-                  ]
-                },
-                {
-                  "name": "lang",
-                  "type": "dynamic",
-                  "label": "Document Language",
-                  "helper": "Choose the language that the OCR needs to use",
-                  "group": "",
-                  "value": "ita",
+                  "value": true,
                   "description": "",
                   "validation": null,
                   "parent": "type_of_doc",
                   "condition": "{parent}==\"Non Machine-Readable\"",
-                  "dynamicType": "select",
-                  "options": [
-                    "ita",
-                    "eng"
-                  ],
+                  "dynamicType": "boolean",
+                  "options": null,
                   "fields": null,
                   "url": null
                 },
@@ -1194,7 +726,9 @@
                 "alias": "",
                 "debug": true,
                 "type_of_doc": "Non Machine-Readable",
-                "lang": "eng"
+                "language": "ita",
+                "borderless_tables": false,
+                "implicit_rows": true
               }
             },
             "locked": null
@@ -1202,89 +736,688 @@
           "selectable": true,
           "draggable": true,
           "positionAbsolute": {
-            "x": 1681.1064678828686,
-            "y": 677.3168178475833
+            "x": 1715,
+            "y": 686
           },
           "__class__": "Node"
         },
         {
-          "id": "f09024f9-413d-4fb5-a461-c56f162526d1",
+          "id": "6356bab4-add3-49fc-b864-15fda19b498e",
           "position": {
-            "x": 1297.0999533407412,
-            "y": 604.482307500365
+            "x": 828,
+            "y": 344
           },
-          "type": "comment",
-          "dragHandle": "#commentHandle",
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
           "sourcePosition": "right",
           "targetPosition": "left",
-          "width": 669,
-          "height": 186,
+          "width": 150,
+          "height": 56,
           "selected": false,
           "dragging": false,
           "data": {
-            "comment": "Non-Machine Readable Doc - CONFIGURED, lang=eng",
-            "fill": "#F9C74F",
-            "height": 186,
-            "width": 668.7570166778039
+            "name": "TableExtractor",
+            "events": null,
+            "description": "",
+            "inputs": [
+              {
+                "id": "pdf",
+                "label": "pdf",
+                "service": "extract_table",
+                "to": "output"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "OCR",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "type_of_doc",
+                  "type": "select",
+                  "label": "Type of Document",
+                  "helper": "",
+                  "group": "",
+                  "value": "Auto-Detect",
+                  "description": "",
+                  "validation": null,
+                  "options": [
+                    "Auto-Detect",
+                    "Machine-Readable",
+                    "Non Machine-Readable"
+                  ]
+                },
+                {
+                  "name": "lang",
+                  "type": "dynamic",
+                  "label": "Document Language",
+                  "helper": "Choose the language that the OCR needs to use",
+                  "group": "",
+                  "value": "ita",
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "select",
+                  "options": [
+                    "ita",
+                    "eng"
+                  ],
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "borderless_tables",
+                  "type": "dynamic",
+                  "label": "Detect Borderless Tables",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "implicit_rows",
+                  "type": "dynamic",
+                  "label": "Split implicit rows",
+                  "helper": "",
+                  "group": "",
+                  "value": true,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "flavor",
+                  "type": "dynamic",
+                  "label": "Parsing Method",
+                  "helper": "Select \"lattice\" if you want a deterministic parser, it works good on doc with demarcated lines between cells and can detect multiple tables in a single page. Select the option \"stream\" if your docs have whitespaces to simulate table structure.",
+                  "group": "",
+                  "value": "lattice",
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "select",
+                  "options": [
+                    "stream",
+                    "lattice"
+                  ],
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "process_background",
+                  "type": "dynamic",
+                  "label": "Process Background Lines",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "Whether to detect line segments not in foreground. It will be taken into consideration only if \"lattice\" is selected as parser.",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "line_scale",
+                  "type": "dynamic",
+                  "label": "Line Scale",
+                  "helper": "Increase the value to detect smaller lines. Large value (>150) will lead to detect text as lines. It only works if \"lattice\" is selected as parser.",
+                  "group": "",
+                  "value": 15,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "number",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "split_text",
+                  "type": "dynamic",
+                  "label": "Split Text",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "Choose whether to split the text that spans across multiple cells.",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                }
+              ],
+              "click": null,
+              "icon": "RiTableFill",
+              "values": {
+                "type_of_doc": "Auto-Detect",
+                "lang": "ita",
+                "implicit_rows": true,
+                "flavor": "lattice",
+                "line_scale": 15,
+                "debug": true
+              }
+            }
           },
-          "zIndex": -1,
-          "selectable": false,
-          "connectable": false,
+          "selectable": true,
+          "draggable": true,
           "positionAbsolute": {
-            "x": 1297.0999533407412,
-            "y": 604.482307500365
+            "x": 828,
+            "y": 344
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "6d117f7e-c66a-486c-92bf-88a770551bf1",
+          "position": {
+            "x": 898,
+            "y": 686
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "TableExtractor",
+            "events": null,
+            "description": "",
+            "inputs": [
+              {
+                "id": "pdf",
+                "label": "pdf",
+                "service": "extract_table",
+                "to": "output"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "OCR",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "type_of_doc",
+                  "type": "select",
+                  "label": "Type of Document",
+                  "helper": "",
+                  "group": "",
+                  "value": "Auto-Detect",
+                  "description": "",
+                  "validation": null,
+                  "options": [
+                    "Auto-Detect",
+                    "Machine-Readable",
+                    "Non Machine-Readable"
+                  ]
+                },
+                {
+                  "name": "lang",
+                  "type": "dynamic",
+                  "label": "Document Language",
+                  "helper": "Choose the language that the OCR needs to use",
+                  "group": "",
+                  "value": "ita",
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "select",
+                  "options": [
+                    "ita",
+                    "eng"
+                  ],
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "borderless_tables",
+                  "type": "dynamic",
+                  "label": "Detect Borderless Tables",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "implicit_rows",
+                  "type": "dynamic",
+                  "label": "Split implicit rows",
+                  "helper": "",
+                  "group": "",
+                  "value": true,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "flavor",
+                  "type": "dynamic",
+                  "label": "Parsing Method",
+                  "helper": "Select \"lattice\" if you want a deterministic parser, it works good on doc with demarcated lines between cells and can detect multiple tables in a single page. Select the option \"stream\" if your docs have whitespaces to simulate table structure.",
+                  "group": "",
+                  "value": "lattice",
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "select",
+                  "options": [
+                    "stream",
+                    "lattice"
+                  ],
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "process_background",
+                  "type": "dynamic",
+                  "label": "Process Background Lines",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "Whether to detect line segments not in foreground. It will be taken into consideration only if \"lattice\" is selected as parser.",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "line_scale",
+                  "type": "dynamic",
+                  "label": "Line Scale",
+                  "helper": "Increase the value to detect smaller lines. Large value (>150) will lead to detect text as lines. It only works if \"lattice\" is selected as parser.",
+                  "group": "",
+                  "value": 15,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "number",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "split_text",
+                  "type": "dynamic",
+                  "label": "Split Text",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "Choose whether to split the text that spans across multiple cells.",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                }
+              ],
+              "click": null,
+              "icon": "RiTableFill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": true,
+                "type_of_doc": "Machine-Readable",
+                "flavor": "lattice",
+                "process_background": true,
+                "line_scale": "15",
+                "split_text": false
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 898,
+            "y": 686
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "76bd9bf1-eb57-43b9-a6bb-be14186e28a4",
+          "position": {
+            "x": 1636,
+            "y": 333
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "TableExtractor",
+            "events": null,
+            "description": "",
+            "inputs": [
+              {
+                "id": "pdf",
+                "label": "pdf",
+                "service": "extract_table",
+                "to": "output"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "OCR",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "type_of_doc",
+                  "type": "select",
+                  "label": "Type of Document",
+                  "helper": "",
+                  "group": "",
+                  "value": "Auto-Detect",
+                  "description": "",
+                  "validation": null,
+                  "options": [
+                    "Auto-Detect",
+                    "Machine-Readable",
+                    "Non Machine-Readable"
+                  ]
+                },
+                {
+                  "name": "lang",
+                  "type": "dynamic",
+                  "label": "Document Language",
+                  "helper": "Choose the language that the OCR needs to use",
+                  "group": "",
+                  "value": "ita",
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "select",
+                  "options": [
+                    "ita",
+                    "eng"
+                  ],
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "borderless_tables",
+                  "type": "dynamic",
+                  "label": "Detect Borderless Tables",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "implicit_rows",
+                  "type": "dynamic",
+                  "label": "Split implicit rows",
+                  "helper": "",
+                  "group": "",
+                  "value": true,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "flavor",
+                  "type": "dynamic",
+                  "label": "Parsing Method",
+                  "helper": "Select \"lattice\" if you want a deterministic parser, it works good on doc with demarcated lines between cells and can detect multiple tables in a single page. Select the option \"stream\" if your docs have whitespaces to simulate table structure.",
+                  "group": "",
+                  "value": "lattice",
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "select",
+                  "options": [
+                    "stream",
+                    "lattice"
+                  ],
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "process_background",
+                  "type": "dynamic",
+                  "label": "Process Background Lines",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "Whether to detect line segments not in foreground. It will be taken into consideration only if \"lattice\" is selected as parser.",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "line_scale",
+                  "type": "dynamic",
+                  "label": "Line Scale",
+                  "helper": "Increase the value to detect smaller lines. Large value (>150) will lead to detect text as lines. It only works if \"lattice\" is selected as parser.",
+                  "group": "",
+                  "value": 15,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "number",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "split_text",
+                  "type": "dynamic",
+                  "label": "Split Text",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "Choose whether to split the text that spans across multiple cells.",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                }
+              ],
+              "click": null,
+              "icon": "RiTableFill",
+              "values": {
+                "type_of_doc": "Auto-Detect",
+                "lang": "ita",
+                "implicit_rows": true,
+                "flavor": "lattice",
+                "line_scale": 15,
+                "debug": true
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 1636,
+            "y": 333
           },
           "__class__": "Node"
         }
       ],
       "edges": [
         {
-          "id": "reactflow__edge-af570cfd-eb42-42ad-95f0-814bfe78ff08output-543eb02b-7a27-415f-8f04-e382125c2a74pdf",
-          "source": "af570cfd-eb42-42ad-95f0-814bfe78ff08",
-          "sourceHandle": "output",
-          "target": "543eb02b-7a27-415f-8f04-e382125c2a74",
-          "targetHandle": "pdf",
-          "data": {
-            "startColor": "#F8637A",
-            "stopColor": "#888"
-          },
-          "selected": false,
-          "dragging": false,
-          "__class__": "Edge"
-        },
-        {
-          "id": "reactflow__edge-e575555f-4a7d-482d-b084-b5a8ad96d226output-22dc88a2-d9eb-46c0-8d87-c45597400f9fpdf",
-          "source": "e575555f-4a7d-482d-b084-b5a8ad96d226",
-          "sourceHandle": "output",
-          "target": "22dc88a2-d9eb-46c0-8d87-c45597400f9f",
-          "targetHandle": "pdf",
-          "data": {
-            "startColor": "#F8637A",
-            "stopColor": "#888"
-          },
-          "selected": false,
-          "dragging": false,
-          "__class__": "Edge"
-        },
-        {
-          "id": "reactflow__edge-5885875a-ab15-4364-8538-431488df5d61output-96761fa6-50e5-4346-b996-d671279ab6d3pdf",
-          "source": "5885875a-ab15-4364-8538-431488df5d61",
-          "sourceHandle": "output",
-          "target": "96761fa6-50e5-4346-b996-d671279ab6d3",
-          "targetHandle": "pdf",
-          "data": {
-            "startColor": "#F8637A",
-            "stopColor": "#888"
-          },
-          "selected": false,
-          "dragging": false,
-          "__class__": "Edge"
-        },
-        {
-          "id": "reactflow__edge-2eb09b34-4b15-4968-83c1-1e92ab2cc259output-b2d0b9e7-94f1-4f07-8b2a-413d266f9450pdf",
+          "id": "reactflow__edge-2eb09b34-4b15-4968-83c1-1e92ab2cc259output-e8b809d2-a846-4724-bdc0-8fcc993ea9bdpdf",
           "source": "2eb09b34-4b15-4968-83c1-1e92ab2cc259",
           "sourceHandle": "output",
-          "target": "b2d0b9e7-94f1-4f07-8b2a-413d266f9450",
+          "target": "e8b809d2-a846-4724-bdc0-8fcc993ea9bd",
+          "targetHandle": "pdf",
+          "data": {
+            "startColor": "#F8637A",
+            "stopColor": "#888"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        },
+        {
+          "id": "reactflow__edge-af570cfd-eb42-42ad-95f0-814bfe78ff08output-6356bab4-add3-49fc-b864-15fda19b498epdf",
+          "source": "af570cfd-eb42-42ad-95f0-814bfe78ff08",
+          "sourceHandle": "output",
+          "target": "6356bab4-add3-49fc-b864-15fda19b498e",
+          "targetHandle": "pdf",
+          "data": {
+            "startColor": "#F8637A",
+            "stopColor": "#888"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        },
+        {
+          "id": "reactflow__edge-e575555f-4a7d-482d-b084-b5a8ad96d226output-6d117f7e-c66a-486c-92bf-88a770551bf1pdf",
+          "source": "e575555f-4a7d-482d-b084-b5a8ad96d226",
+          "sourceHandle": "output",
+          "target": "6d117f7e-c66a-486c-92bf-88a770551bf1",
+          "targetHandle": "pdf",
+          "data": {
+            "startColor": "#F8637A",
+            "stopColor": "#888"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        },
+        {
+          "id": "reactflow__edge-5885875a-ab15-4364-8538-431488df5d61output-76bd9bf1-eb57-43b9-a6bb-be14186e28a4pdf",
+          "source": "5885875a-ab15-4364-8538-431488df5d61",
+          "sourceHandle": "output",
+          "target": "76bd9bf1-eb57-43b9-a6bb-be14186e28a4",
           "targetHandle": "pdf",
           "data": {
             "startColor": "#F8637A",

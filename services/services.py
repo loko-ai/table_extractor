@@ -37,11 +37,16 @@ def extract_table_ocr(file, args):
     camelot_kwargs = dict()
     camelot_kwargs["process_background"] = args.get("process_background", False)
     camelot_kwargs["flavor"] = args.get("flavor", "lattice")
-    camelot_kwargs["line_scale"] = args.get("line_scale", 15)
+    camelot_kwargs["line_scale"] = int(args.get("line_scale", 15))
     camelot_kwargs["split_text"] = args.get("split_text", False)
     logger.debug(f"=================== CAMELOT {camelot_kwargs}")
     non_mr_kwargs = dict()
-    non_mr_kwargs["language"] = args.get("language", "ita")
+    non_mr_kwargs["ocr_kwargs"] = dict()
+    non_mr_kwargs["ocr_kwargs"]["lang"] = args.get("lang", "ita")
+    non_mr_kwargs["extraction_kwargs"] = dict()
+    non_mr_kwargs["extraction_kwargs"]["implicit_rows"] = args.get("implicit_rows", True)
+    non_mr_kwargs["extraction_kwargs"]["borderless_tables"] = args.get("borderless_tables", False)
+
     res = extract_table(file, type_of_doc, camelot_kwargs, non_mr_kwargs)
 
     # res = extract_table(file, kwargs)

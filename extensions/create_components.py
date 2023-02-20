@@ -6,9 +6,16 @@ pdf_service = "extract_table"
 doc_type = Select(label="Type of Document", name="type_of_doc",
                   options=["Auto-Detect", "Machine-Readable", "Non Machine-Readable"], value="Auto-Detect")
 
-language = Dynamic(label="Document Language", name="language", dynamicType="select", options=["ita", "eng"], value="ita",
+language = Dynamic(label="Document Language", name="lang", dynamicType="select", options=["ita", "eng"], value="ita",
                    parent="type_of_doc",
                    condition='{parent}=="Non Machine-Readable"', helper="Choose the language that the OCR needs to use")
+
+borderless_tables = Dynamic(label="Detect Borderless Tables", name="borderless_tables", dynamicType="boolean", parent="type_of_doc",
+                   condition='{parent}=="Non Machine-Readable"', value=False)
+
+implicit_rows = Dynamic(label="Split implicit rows", name="implicit_rows", dynamicType="boolean", parent="type_of_doc",
+                   condition='{parent}=="Non Machine-Readable"', value=True)
+
 
 flavor = Dynamic(label="Parsing Method", name="flavor", dynamicType="select", options=["stream", "lattice"],
                  value="lattice", parent="type_of_doc", condition='{parent}=="Machine-Readable"',
@@ -28,7 +35,9 @@ split_text = Dynamic(label="Split Text", name="split_text", dynamicType="boolean
                      condition='{parent}=="Machine-Readable"', value=False,
                      description="Choose whether to split the text that spans across multiple cells.")
 
-args_list = [doc_type, language, flavor, process_background, line_scale, split_text]
+
+
+args_list = [doc_type, language, borderless_tables, implicit_rows, flavor, process_background, line_scale, split_text]
 
 table_ocr_components = Component(name="TableExtractor", inputs=[Input("pdf", service=pdf_service)], group='OCR',
                                  args=args_list, icon="RiTableFill")
