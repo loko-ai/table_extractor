@@ -13,7 +13,7 @@ language = Dynamic(label="Document Language", name="lang", dynamicType="select",
 borderless_tables = Dynamic(label="Detect Borderless Tables", name="borderless_tables", dynamicType="boolean", parent="type_of_doc",
                    condition='{parent}=="Non Machine-Readable"', value=False)
 
-implicit_rows = Dynamic(label="Split implicit rows", name="implicit_rows", dynamicType="boolean", parent="type_of_doc",
+implicit_rows = Dynamic(label="Split Implicit Rows", name="implicit_rows", dynamicType="boolean", parent="type_of_doc",
                    condition='{parent}=="Non Machine-Readable"', value=True)
 
 

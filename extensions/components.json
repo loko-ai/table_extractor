@@ -83,7 +83,7 @@
     {
      "name": "implicit_rows",
      "type": "dynamic",
-     "label": "Split implicit rows",
+     "label": "Split Implicit Rows",
      "helper": "",
      "group": "",
      "value": true,

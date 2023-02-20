@@ -3,7 +3,7 @@
   "id": "table_extractor",
   "description": "",
   "created_on": "02/02/2023, 09:14:05",
-  "last_modify": "20/02/2023, 16:04:02",
+  "last_modify": "20/02/2023, 17:55:02",
   "graphs": {
     "main": {
       "nodes": [
@@ -404,7 +404,7 @@
           "id": "2eb09b34-4b15-4968-83c1-1e92ab2cc259",
           "position": {
             "x": 1377.5650281253754,
-            "y": 671.3575585682032
+            "y": 657.3575585682032
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -498,7 +498,7 @@
           "draggable": true,
           "positionAbsolute": {
             "x": 1377.5650281253754,
-            "y": 671.3575585682032
+            "y": 657.3575585682032
           },
           "__class__": "Node"
         },
@@ -638,7 +638,7 @@
                 {
                   "name": "implicit_rows",
                   "type": "dynamic",
-                  "label": "Split implicit rows",
+                  "label": "Split Implicit Rows",
                   "helper": "",
                   "group": "",
                   "value": true,
@@ -848,7 +848,7 @@
                 {
                   "name": "implicit_rows",
                   "type": "dynamic",
-                  "label": "Split implicit rows",
+                  "label": "Split Implicit Rows",
                   "helper": "",
                   "group": "",
                   "value": true,
@@ -1056,7 +1056,7 @@
                 {
                   "name": "implicit_rows",
                   "type": "dynamic",
-                  "label": "Split implicit rows",
+                  "label": "Split Implicit Rows",
                   "helper": "",
                   "group": "",
                   "value": true,
@@ -1267,7 +1267,7 @@
                 {
                   "name": "implicit_rows",
                   "type": "dynamic",
-                  "label": "Split implicit rows",
+                  "label": "Split Implicit Rows",
                   "helper": "",
                   "group": "",
                   "value": true,
