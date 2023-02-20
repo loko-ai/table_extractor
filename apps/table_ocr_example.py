@@ -2,11 +2,11 @@ import os
 import sys
 
 import requests
-import table_ocr.util
-import table_ocr.extract_tables
-import table_ocr.extract_cells
-import table_ocr.ocr_image
-import table_ocr.ocr_to_csv
+# import table_ocr.util
+# import table_ocr.extract_tables
+# import table_ocr.extract_cells
+# import table_ocr.ocr_image
+# import table_ocr.ocr_to_csv
 
 
 def download_image_to_tempdir(url, filename=None):
@@ -21,8 +21,8 @@ def download_image_to_tempdir(url, filename=None):
     return filepath
 
 def main(url):
-    image_filepath = url
-    # image_filepath = download_image_to_tempdir(url)
+    # image_filepath = url
+    image_filepath = download_image_to_tempdir(url)
     image_tables = table_ocr.extract_tables.main([image_filepath])
 
     print("Running `{}`".format(f"extract_tables.main([{image_filepath}])."))
@@ -53,8 +53,8 @@ def main(url):
 
 if __name__ == "__main__":
     # csv_output = main(sys.argv[1])
-    csv_output = main("../data/example-page.png")
-
+    # csv_output = main("../data/example-page.png")
+    csv_output = main("https://raw.githubusercontent.com/eihli/image-table-ocr/master/resources/examples/example-page.png")
     print()
     print("Here is the entire CSV output:")
     print()

@@ -22,17 +22,113 @@
    }
   ],
   "options": {
-   "values": {},
+   "values": {
+    "type_of_doc": "Auto-Detect",
+    "lang": "ita",
+    "flavor": "lattice",
+    "line_scale": 15
+   },
    "args": [
     {
+     "name": "type_of_doc",
+     "type": "select",
+     "label": "Type of Document",
+     "helper": "",
+     "group": "",
+     "value": "Auto-Detect",
+     "description": "",
+     "validation": null,
+     "options": [
+      "Auto-Detect",
+      "Machine-Readable",
+      "Non Machine-Readable"
+     ]
+    },
+    {
+     "name": "lang",
+     "type": "dynamic",
+     "label": "Document Language",
+     "helper": "Choose the language that the OCR needs to use",
+     "group": "",
+     "value": "ita",
+     "description": "",
+     "validation": null,
+     "parent": "type_of_doc",
+     "condition": "{parent}==\"Non Machine-Readable\"",
+     "dynamicType": "select",
+     "options": [
+      "ita",
+      "eng"
+     ],
+     "fields": null,
+     "url": null
+    },
+    {
+     "name": "flavor",
+     "type": "dynamic",
+     "label": "Parsing Method",
+     "helper": "Select \"lattice\" if you want a deterministic parser, it works good on doc with demarcated lines between cells and can detect multiple tables in a single page. Select the option \"stream\" if your docs have whitespaces to simulate table structure.",
+     "group": "",
+     "value": "lattice",
+     "description": "",
+     "validation": null,
+     "parent": "type_of_doc",
+     "condition": "{parent}==\"Machine-Readable\"",
+     "dynamicType": "select",
+     "options": [
+      "stream",
+      "lattice"
+     ],
+     "fields": null,
+     "url": null
+    },
+    {
      "name": "process_background",
-     "type": "boolean",
+     "type": "dynamic",
      "label": "Process Background Lines",
      "helper": "",
      "group": "",
      "value": false,
+     "description": "Whether to detect line segments not in foreground. It will be taken into consideration only if \"lattice\" is selected as parser.",
+     "validation": null,
+     "parent": "type_of_doc",
+     "condition": "{parent}==\"Machine-Readable\"",
+     "dynamicType": "boolean",
+     "options": null,
+     "fields": null,
+     "url": null
+    },
+    {
+     "name": "line_scale",
+     "type": "dynamic",
+     "label": "Line Scale",
+     "helper": "Increase the value to detect smaller lines. Large value (>150) will lead to detect text as lines. It only works if \"lattice\" is selected as parser.",
+     "group": "",
+     "value": 15,
      "description": "",
-     "validation": null
+     "validation": null,
+     "parent": "type_of_doc",
+     "condition": "{parent}==\"Machine-Readable\"",
+     "dynamicType": "number",
+     "options": null,
+     "fields": null,
+     "url": null
+    },
+    {
+     "name": "split_text",
+     "type": "dynamic",
+     "label": "Split Text",
+     "helper": "",
+     "group": "",
+     "value": false,
+     "description": "Choose whether to split the text that spans across multiple cells.",
+     "validation": null,
+     "parent": "type_of_doc",
+     "condition": "{parent}==\"Machine-Readable\"",
+     "dynamicType": "boolean",
+     "options": null,
+     "fields": null,
+     "url": null
     }
    ]
   }

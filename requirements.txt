@@ -1,11 +1,12 @@
 Flask
+Pillow
 PyPDF2 < 3.0
 camelot-py
 fastapi
 ghostscript
+img2table
 loguru
 loko-client
 loko-extensions
 pymupdf
 python-multipart
-table_ocr
