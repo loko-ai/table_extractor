@@ -2,6 +2,8 @@ from loko_extensions.model.components import Input, Output, Dynamic, AsyncSelect
     Events
 from loko_extensions.model.components import Arg
 
+from extensions.components_description import table_ocr_description
+
 pdf_service = "extract_table"
 doc_type = Select(label="Type of Document", name="type_of_doc",
                   options=["Auto-Detect", "Machine-Readable", "Non Machine-Readable"], value="Auto-Detect")
@@ -40,6 +42,6 @@ split_text = Dynamic(label="Split Text", name="split_text", dynamicType="boolean
 args_list = [doc_type, language, borderless_tables, implicit_rows, flavor, process_background, line_scale, split_text]
 
 table_ocr_components = Component(name="TableExtractor", inputs=[Input("pdf", service=pdf_service)], group='OCR',
-                                 args=args_list, icon="RiTableFill")
+                                 args=args_list, icon="RiTableFill", description=table_ocr_description)
 
 save_extensions([table_ocr_components])
