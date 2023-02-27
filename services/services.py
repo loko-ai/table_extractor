@@ -2,36 +2,28 @@ import io
 import pathlib
 import re
 
-from flask import Flask, request, jsonify
+import gradio as gr
 from loguru import logger
 from loko_extensions.business.decorators import extract_value_args
 
-# from fastapi import Request, FastAPI, File
-# from business.camelot_extraction import extract_from_camelot
+from fastapi import Request, FastAPI, File
+
+# from business.gradio_interface import DEMO
 from business.table_extraction import get_file_extension, extract_table
 
-app = Flask("")
 
 from utils.decorator_fastAPI import ExtractValueArgsFastapi
-import camelot
 
 
-# app = FastAPI()
-#
-# @app.post("/extract_table")
-# @ExtractValueArgsFastapi(file=True)
-# def extract_table(file, args):
-#     file_path = pathlib.Path('file').write_bytes(io.BytesIO(file.decode()).getbuffer())
-#     tables = camelot.read_pdf(file_path)
-#     tables.export("file.json", f='json', compress=True)
-#     return dict(msg="example")
-#
+app = FastAPI()
 
-@app.route("/extract_table", methods=["POST"])
-@extract_value_args(_request=request, file=True)
+
+@app.post("/extract_table")
+@ExtractValueArgsFastapi(file=True)
 def extract_table_ocr(file, args):
-    logger.debug(f"file {file.__dict__}")
+    logger.debug(f"file {file.filename}")
     logger.debug(f"args {args}")
+    logger.debug(f"body:: {type(file)}")
 
     type_of_doc = args.pop("type_of_doc")
     camelot_kwargs = dict()
@@ -49,32 +41,25 @@ def extract_table_ocr(file, args):
 
     res = extract_table(file, type_of_doc, camelot_kwargs, non_mr_kwargs)
 
-    # res = extract_table(file, kwargs)
-    # fb = file.read()
-    #
-    # res = extract_from_camelot(fb, kwargs)
     logger.debug(f"resssssssssssss {res}")
-    return jsonify(dict(content=res))
+    return dict(content=res)
 
-# @app.route("/", methods=["get"])
-# def example():
-#     return jsonify(dict(msg = "ciao"))
+
 #
+# @app.route("/extract_table_serv", methods=["POST"])
+# # @extract_value_args(_request=request, file=True)
+# def extract_table_serv():
+#     if 'file' not in request.files:
+#         return jsonify({'error': 'No file provided'}), 400
 #
-@app.route("/extract_table_serv", methods=["POST"])
-# @extract_value_args(_request=request, file=True)
-def extract_table_serv():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file provided'}), 400
-
-    file = request.files['file']
-    logger.debug(f"file {file.__dict__}")
-
-    # fb = file.read()
-    #
-    # res = extract_from_camelot(fb, kwargs)
-    logger.debug(f"resssssssssssss {res}")
-    return jsonify(dict(content=res))
+#     file = request.files['file']
+#     logger.debug(f"file {file.__dict__}")
+#
+#     # fb = file.read()
+#     #
+#     # res = extract_from_camelot(fb, kwargs)
+#     logger.debug(f"resssssssssssss {res}")
+#     return jsonify(dict(content=res))
 
 
 # @app.route("/extract_table2", methods=["POST"])
@@ -99,5 +84,8 @@ def extract_table_serv():
 #     return jsonify(tt)
 
 
-if __name__ == "__main__":
-    app.run("0.0.0.0", 8080)
+
+
+# CUSTOM_PATH = "/TableExtractorGui/"
+
+# app = gr.mount_gradio_app(app, DEMO, path=CUSTOM_PATH)

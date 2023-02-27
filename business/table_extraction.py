@@ -20,7 +20,7 @@ def get_file_extension(filename):
 
 def extract_table(file, type_of_doc, camelot_kwargs, non_mr_kwargs):
     f_ext = get_file_extension(filename=file.filename)
-    fb = file.read()
+    fb = file.file.read()
     is_mr = False
     # is_mr = False if type_of_doc=="Non Machine-Readable"
     doc = None
