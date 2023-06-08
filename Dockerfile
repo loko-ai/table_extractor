@@ -6,12 +6,12 @@ RUN wget https://github.com/tesseract-ocr/tessdata/raw/main/eng.traineddata --di
 RUN wget https://github.com/tesseract-ocr/tessdata/raw/main/ita.traineddata --directory-prefix=/usr/share/tesseract-ocr/4.00/tessdata
 RUN apt install ghostscript python3-tk -y
 EXPOSE 8080
-ADD ./requirements.txt /
-RUN pip install -r /requirements.txt
+ADD ./requirements.lock /
+RUN pip install -r /requirements.lock
 ARG GATEWAY
 ENV GATEWAY=$GATEWAY
 ADD . /plugin
 ENV PYTHONPATH=$PYTHONPATH:/plugin
 WORKDIR /plugin/services
-CMD uvicorn services:app --port 8080 --host  0.0.0.0
-# CMD python services.py
+# CMD uvicorn services:app --port 8080 --host  0.0.0.0
+CMD python services.py

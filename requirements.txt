@@ -9,3 +9,4 @@ loko-client
 loko-extensions
 pymupdf
 python-multipart
+uvicorn

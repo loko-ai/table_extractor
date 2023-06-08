@@ -2,13 +2,12 @@ import io
 import pathlib
 import re
 
-import gradio as gr
+import uvicorn as uvicorn
 from loguru import logger
 from loko_extensions.business.decorators import extract_value_args
 
 from fastapi import Request, FastAPI, File
 
-# from business.gradio_interface import DEMO
 from business.table_extraction import get_file_extension, extract_table
 
 
@@ -89,3 +88,5 @@ def extract_table_ocr(file, args):
 # CUSTOM_PATH = "/TableExtractorGui/"
 
 # app = gr.mount_gradio_app(app, DEMO, path=CUSTOM_PATH)
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8080)

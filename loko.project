@@ -3,7 +3,7 @@
   "id": "table_extractor",
   "description": "",
   "created_on": "02/02/2023, 09:14:05",
-  "last_modify": "22/02/2023, 14:32:45",
+  "last_modify": "08/06/2023, 08:27:00",
   "graphs": {
     "main": {
       "nodes": [
@@ -932,12 +932,10 @@
               "click": null,
               "icon": "RiTableFill",
               "values": {
-                "type_of_doc": "Auto-Detect",
-                "lang": "ita",
-                "implicit_rows": true,
-                "flavor": "lattice",
-                "line_scale": 15,
-                "debug": true
+                "comment": "",
+                "alias": "",
+                "debug": true,
+                "type_of_doc": "Auto-Detect"
               }
             },
             "locked": null
@@ -1150,8 +1148,7 @@
                 "line_scale": "15",
                 "split_text": false
               }
-            },
-            "locked": null
+            }
           },
           "selectable": true,
           "draggable": true,
@@ -1352,12 +1349,10 @@
               "click": null,
               "icon": "RiTableFill",
               "values": {
-                "type_of_doc": "Auto-Detect",
-                "lang": "ita",
-                "implicit_rows": true,
-                "flavor": "lattice",
-                "line_scale": 15,
-                "debug": true
+                "comment": "",
+                "alias": "",
+                "debug": true,
+                "type_of_doc": "Auto-Detect"
               }
             },
             "locked": null
