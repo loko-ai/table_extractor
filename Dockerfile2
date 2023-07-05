@@ -1,0 +1,1 @@
+FROM lokoai/table_extractor:1.0.0

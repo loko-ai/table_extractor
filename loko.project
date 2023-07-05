@@ -3,7 +3,7 @@
   "id": "table_extractor",
   "description": "",
   "created_on": "02/02/2023, 09:14:05",
-  "last_modify": "08/06/2023, 08:27:00",
+  "last_modify": "05/07/2023, 16:43:51",
   "graphs": {
     "main": {
       "nodes": [
@@ -11,7 +11,7 @@
           "id": "af570cfd-eb42-42ad-95f0-814bfe78ff08",
           "position": {
             "x": 526.8223611091133,
-            "y": 320.4820352566408
+            "y": 306.4820352566408
           },
           "type": "custom",
           "dragHandle": "#nodeHandle",
@@ -105,7 +105,7 @@
           "draggable": true,
           "positionAbsolute": {
             "x": 526.8223611091133,
-            "y": 320.4820352566408
+            "y": 306.4820352566408
           },
           "__class__": "Node"
         },
@@ -1364,6 +1364,420 @@
             "y": 333
           },
           "__class__": "Node"
+        },
+        {
+          "id": "365b7d72-0f26-4611-8e07-4b568a2090d0",
+          "position": {
+            "x": 1129.5559013297825,
+            "y": 1375.3071956931499
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 156,
+          "height": 88,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "File Reader",
+            "events": null,
+            "description": "### Description\nThe FILE READER component allows the reading of individual files.\n\n### Output\nSetting the **Read Content** parameter to **False**, the output provides the file path in PosixPath format. The component will then need to be connected to other components to read the content, for example *LineReader*.\n\nOn the contrary, setting the **Read Content** parameter to **True**, you can choose whether to read the content in *Binary* format. This format will be selected for reading non-text files.",
+            "inputs": [
+              {
+                "id": "input",
+                "label": "input"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Inputs",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "value",
+                  "type": "files",
+                  "label": "File",
+                  "fragment": "files",
+                  "validation": {
+                    "required": "Required field"
+                  }
+                },
+                {
+                  "name": "read_content",
+                  "type": "boolean",
+                  "label": "Read content"
+                },
+                {
+                  "name": "binary",
+                  "type": "dynamic",
+                  "label": "Binary",
+                  "dynamicType": {
+                    "true": "boolean"
+                  },
+                  "parent": "read_content"
+                }
+              ],
+              "click": "Send file",
+              "icon": "RiFileList3Fill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": false,
+                "read_content": false,
+                "value": {
+                  "name": "foo.pdf",
+                  "path": "data/projects/table_extractor/data/foo.pdf",
+                  "parent": "data/projects/table_extractor/data",
+                  "isDir": false,
+                  "hidden": false
+                }
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "positionAbsolute": {
+            "x": 1129.5559013297825,
+            "y": 1375.3071956931499
+          },
+          "__class__": "Node"
+        },
+        {
+          "id": "575515dd-5c69-42a0-b09f-417f045bb2a4",
+          "position": {
+            "x": 1601,
+            "y": 1397
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "pname": "table_extractor",
+            "name": "TableExtractor",
+            "events": null,
+            "description": "\n### Description\n\n\nTableExtractor is the component which allows to parse documents containing table and extract them, auto-detecting if the documents is machine readable or not and apply the most appropriate alghorithm. Nevertheless, you can select and choose the type of documents you want to parse, and specify also some parameters to enhance the extraction.\n\n### Input\n\n \n This component take in input a file, which can either be a pdf or an image file (png, jpg..). \n \n \n### Configuration\n \nThe first parameter that you may set is the **type of documents** you want to parse, namely if they are machine readable or not, or if you prefer to let the system detect this information by itself. If the latter is the option that you choose to adopt, you don't have any other parameters to set, counterwise each of the other two options available have their one specific parameters, that you can configure based on your needs. \n\n\n\n\n\n#### Machine Readable Docs\n\n\nIn case of Machine-Readable docs, if you want to configure advance settings it's possible to set the following parameters:\n\n- **Parsing method:** you can either choose _\"lattice\"_ method or the _\"stream\"_ method, based on the type of document you expect to have. If you have demarcated lines between cell or multiple tables in a single page you can use \"lattice\" which works in a deterministic way. In case your documents have whitespaces to simulate the table structure, the \"stream\" option will \"guess\" the table areas based on the text;\n- **Process Background Lines:** with this parameter you can decide if you want to detect also table with lines in the background. It will be taken in consideration only if \"lattice\" is selected as parser; \n- **Line Scale:** this value represent the scale of the lines to take in consideration. The default value is 15, if you want to detect smaller lines you need to increase this number. Large value (>150) could lead to detect text as lines. As for the aforementioned parameter, also this one, will be taken in consideration only if \"lattice\" is selected as parser; \n- **Process Background Lines:** toggle this parameter if you want to split the text that spans across multiple cells.\n\n\n\n\n\n####  Non Machine-Readable documents\n\n\nIn case of Non Machine-Readable documents, if you want, it's possible to configure the following parameters:\n\n- **Document Language:** you can select the language to use in the OCR instance. At the moment it's possible to choose between english and italian;\n- **Detect Bordeless Tables:** toggle this option if you know your documents may have tables not delimited by border;\n- **Split Implicit Rows:** toggle this parameter if you want to consider rows not divided by explicit border/line as seperated rows. If this field is untoggled, the rows will be join in one single row.\n\n \n \n ",
+            "inputs": [
+              {
+                "id": "pdf",
+                "label": "pdf",
+                "service": "extract_table",
+                "to": "output"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "OCR",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "type_of_doc",
+                  "type": "select",
+                  "label": "Type of Document",
+                  "helper": "",
+                  "group": "",
+                  "value": "Auto-Detect",
+                  "description": "",
+                  "validation": null,
+                  "options": [
+                    "Auto-Detect",
+                    "Machine-Readable",
+                    "Non Machine-Readable"
+                  ]
+                },
+                {
+                  "name": "lang",
+                  "type": "dynamic",
+                  "label": "Document Language",
+                  "helper": "Choose the language that the OCR needs to use",
+                  "group": "",
+                  "value": "ita",
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "select",
+                  "options": [
+                    "ita",
+                    "eng"
+                  ],
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "borderless_tables",
+                  "type": "dynamic",
+                  "label": "Detect Borderless Tables",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "implicit_rows",
+                  "type": "dynamic",
+                  "label": "Split Implicit Rows",
+                  "helper": "",
+                  "group": "",
+                  "value": true,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Non Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "flavor",
+                  "type": "dynamic",
+                  "label": "Parsing Method",
+                  "helper": "Select \"lattice\" if you want a deterministic parser, it works good on doc with demarcated lines between cells and can detect multiple tables in a single page. Select the option \"stream\" if your docs have whitespaces to simulate table structure.",
+                  "group": "",
+                  "value": "lattice",
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "select",
+                  "options": [
+                    "stream",
+                    "lattice"
+                  ],
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "process_background",
+                  "type": "dynamic",
+                  "label": "Process Background Lines",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "Whether to detect line segments not in foreground. It will be taken into consideration only if \"lattice\" is selected as parser.",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "line_scale",
+                  "type": "dynamic",
+                  "label": "Line Scale",
+                  "helper": "Increase the value to detect smaller lines. Large value (>150) will lead to detect text as lines. It only works if \"lattice\" is selected as parser.",
+                  "group": "",
+                  "value": 15,
+                  "description": "",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "number",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                },
+                {
+                  "name": "split_text",
+                  "type": "dynamic",
+                  "label": "Split Text",
+                  "helper": "",
+                  "group": "",
+                  "value": false,
+                  "description": "Choose whether to split the text that spans across multiple cells.",
+                  "validation": null,
+                  "parent": "type_of_doc",
+                  "condition": "{parent}==\"Machine-Readable\"",
+                  "dynamicType": "boolean",
+                  "options": null,
+                  "fields": null,
+                  "url": null
+                }
+              ],
+              "click": null,
+              "icon": "RiTableFill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": false,
+                "type_of_doc": "Non Machine-Readable",
+                "lang": "ita",
+                "borderless_tables": false,
+                "implicit_rows": true
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "__class__": "Node"
+        },
+        {
+          "id": "eb544d41-ca12-4449-a719-c6acbafa1154",
+          "position": {
+            "x": 1939,
+            "y": 1343
+          },
+          "type": "custom",
+          "dragHandle": "#nodeHandle",
+          "sourcePosition": "right",
+          "targetPosition": "left",
+          "width": 150,
+          "height": 56,
+          "selected": false,
+          "dragging": false,
+          "data": {
+            "name": "Selector",
+            "events": null,
+            "description": "### Description\nThe SELECTOR component is used to select the value of one or more object keys. The required key/s are defined using the parameter **Keys**.\n\nIn order to add other keys you need to click on the **\"Add field\"** button.\n\nIf the field **Ignore Error** is toggled, missing keys are ignored.\n\nIt's also possible to select nested key, just by writing them in a *key* field, and seperating them using a full stop. Let's consider the object in the example below: if you want to have access to the content of the \"key3\" object, you need to use the following notation \"key1.key2.key3\".\n\n\n```json\n {\"key1\":{\"key2\":{\"key3\":[\"val1\", \"val2\", \"val3\"]}}} \n```\n\n\n\n### Input\n\nThe input consists of a dictionary.\n\n\n\n### Output\n\nThe output is the value of the required key of the dictionary received as input, if only one key is selected; otherwise it's an object which contains the keys specified and their value.\n",
+            "inputs": [
+              {
+                "id": "input",
+                "label": "input"
+              }
+            ],
+            "outputs": [
+              {
+                "id": "output",
+                "label": "output"
+              }
+            ],
+            "configured": true,
+            "options": {
+              "group": "Common",
+              "args": [
+                {
+                  "name": "comment",
+                  "type": "area",
+                  "label": "Node comment",
+                  "helper": "Use it to explain the usage of this node"
+                },
+                {
+                  "name": "alias",
+                  "type": "text",
+                  "label": "Name",
+                  "helper": "Use this name as an alias"
+                },
+                {
+                  "name": "debug",
+                  "type": "boolean",
+                  "label": "Debug to Console",
+                  "divider": true
+                },
+                {
+                  "name": "ignore_err",
+                  "label": "Ignor Error",
+                  "type": "boolean",
+                  "description": "Choose whether to ignore error in case of a missing key or not"
+                },
+                {
+                  "name": "exclude",
+                  "label": "Exclude Keys",
+                  "type": "boolean",
+                  "description": "If enabled, the output contains the whole input object excluding the specified keys; otherwise, only the specified keys are returned"
+                },
+                {
+                  "name": "keys",
+                  "label": "Keys",
+                  "type": "multiKeyValue",
+                  "validation": {
+                    "required": "Required field"
+                  },
+                  "description": "Name of the key/s to select from the incoming message",
+                  "fields": [
+                    {
+                      "name": "k",
+                      "placeholder": "key",
+                      "validation": {
+                        "required": "Required field"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "click": null,
+              "icon": "RiCursorFill",
+              "values": {
+                "comment": "",
+                "alias": "",
+                "debug": false,
+                "ignore_err": false,
+                "exclude": false,
+                "keys": [
+                  {
+                    "k": "content.0",
+                    "id": "8bed54e0-d4ae-4e8c-a17e-8fa56a2bc2d7"
+                  }
+                ]
+              }
+            },
+            "locked": null
+          },
+          "selectable": true,
+          "draggable": true,
+          "__class__": "Node"
         }
       ],
       "edges": [
@@ -1418,6 +1832,34 @@
           "data": {
             "startColor": "#F8637A",
             "stopColor": "#888"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        },
+        {
+          "id": "reactflow__edge-365b7d72-0f26-4611-8e07-4b568a2090d0output-575515dd-5c69-42a0-b09f-417f045bb2a4pdf",
+          "source": "365b7d72-0f26-4611-8e07-4b568a2090d0",
+          "sourceHandle": "output",
+          "target": "575515dd-5c69-42a0-b09f-417f045bb2a4",
+          "targetHandle": "pdf",
+          "data": {
+            "startColor": "#F8637A",
+            "stopColor": "#888"
+          },
+          "selected": false,
+          "dragging": false,
+          "__class__": "Edge"
+        },
+        {
+          "id": "reactflow__edge-575515dd-5c69-42a0-b09f-417f045bb2a4output-eb544d41-ca12-4449-a719-c6acbafa1154input",
+          "source": "575515dd-5c69-42a0-b09f-417f045bb2a4",
+          "sourceHandle": "output",
+          "target": "eb544d41-ca12-4449-a719-c6acbafa1154",
+          "targetHandle": "input",
+          "data": {
+            "startColor": "#888",
+            "stopColor": "#D770AD"
           },
           "selected": false,
           "dragging": false,
